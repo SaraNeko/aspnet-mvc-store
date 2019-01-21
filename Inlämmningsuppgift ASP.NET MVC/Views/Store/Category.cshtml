@@ -1,0 +1,59 @@
+﻿@model Inlämmningsuppgift_ASP.NET_MVC.ViewModels.ProductIndexViewModel
+@{
+    ViewBag.Title = "Category";
+}
+
+<h2>Category</h2>
+
+<p>
+    @Html.ActionLink("Back to Categories", "Index", new { })
+	<br>
+    @Html.ActionLink("Add New Product", "CreateProduct")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+			Name
+            @if (Model.CurrentSort != "NameAsc")
+            {
+                @Html.ActionLink("▼", "Category", new { sort = "NameAsc" }, new { title = "Sort by Name Ascending" })
+            }
+            @if (Model.CurrentSort != "NameDesc")
+            {
+                @Html.ActionLink("▲", "Category", new { sort = "NameDesc" }, new { title = "Sort by Name Descending" })
+            }
+        </th>
+        <th>
+			Price
+            @if (Model.CurrentSort != "PriceAsc")
+            {
+                @Html.ActionLink("▼", "Category", new { sort = "PriceAsc" }, new { title = "Sort by Price Ascending" })
+            }
+            @if (Model.CurrentSort != "PriceDesc")
+            {
+                @Html.ActionLink("▲", "Category", new { sort = "PriceDesc" }, new { title = "Sort by Price Descending" })
+            }
+        </th>
+        <th>Options</th>
+    </tr>
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>
+				<b>@Html.ActionLink(item.name, "Product", new { id = item.id })</b>			
+				<br>
+				@item.description
+			</td>
+            <td>@item.price</td>
+            <td>
+                @if (User.IsInRole("Admin") || User.IsInRole("Product Manager"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) <text>|</text>
+                }
+                @Html.ActionLink("View", "Product", new { id = item.id })
+            </td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,46 @@
+﻿@model Inlämmningsuppgift_ASP.NET_MVC.ViewModels.ProductEditViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Product</h2>
+
+<p>
+    @Html.ActionLink("Back", null, null, null, new { href = Request.UrlReferrer })
+</p>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+<table class="table">
+    <tr>
+        <td>Name</td>
+        <td>
+            @Html.HiddenFor(model => model.id)
+            @Html.TextBoxFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>
+            @Html.TextBoxFor(p => p.description)
+            @Html.ValidationMessageFor(p => p.description)
+        </td>
+    </tr>
+    <tr>
+        <td>Price</td>
+        <td>
+            @Html.TextBoxFor(p => p.price)
+            @Html.ValidationMessageFor(p => p.price)
+        </td>
+    </tr>
+    <tr>
+    <td>Category ID</td>
+    <td>
+        @Html.TextBoxFor(p => p.categoryId)
+        @Html.ValidationMessageFor(p => p.categoryId)
+    </td>
+    </tr>
+</table>
+    <input type="submit" value="Save" />
+}

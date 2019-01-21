@@ -1,0 +1,24 @@
+﻿@model Inlämmningsuppgift_ASP.NET_MVC.ViewModels.CategoryCreateViewModel
+@{
+    ViewBag.Title = "Create Category";
+}
+
+<h2>Create Category</h2>
+
+<p>
+    @Html.ActionLink("Back to Categories", "Index", new { })
+</p>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <td>Name</td>
+            <td>
+                @Html.TextBoxFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Save" />
+}

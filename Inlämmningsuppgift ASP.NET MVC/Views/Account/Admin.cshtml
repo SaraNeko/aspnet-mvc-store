@@ -1,0 +1,44 @@
+﻿@model Inlämmningsuppgift_ASP.NET_MVC.ViewModels.AccountIndexViewModel
+@{
+    ViewBag.Title = "Accounts";
+}
+
+<h2>Account List</h2>
+
+<p>
+    @Html.ActionLink("Add New User", "Register")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Username/Email/ID
+            @if (Model.CurrentSort != "NameAsc")
+            {
+                @Html.ActionLink("▼", "Admin", new { sort = "NameAsc" }, new { title = "Sort by Username Ascending" })
+            }
+            @if (Model.CurrentSort != "NameDesc")
+            {
+                @Html.ActionLink("▲", "Admin", new { sort = "NameDesc" }, new { title = "Sort by Username Descending" })
+            }
+        </th>
+        <th>Options</th>
+    </tr>
+    @foreach (var account in Model.Accounts)
+    {
+        <tr>
+            <td>
+                <b>@Html.ActionLink(account.UserName, "Account", new { id = account.Id })</b>
+                <br>
+				@account.Email
+				<br>
+                @account.Id
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditAccount", new { id = account.Id }) |
+                @Html.ActionLink("View", "Account", new { id = account.Id })
+            </td>
+        </tr>
+    }
+</table>
+

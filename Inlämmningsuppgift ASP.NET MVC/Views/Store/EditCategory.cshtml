@@ -1,0 +1,31 @@
+﻿@model Inlämmningsuppgift_ASP.NET_MVC.ViewModels.CategoryEditViewModel
+@{
+    ViewBag.Title = "Edit Category";
+}
+
+<h2>Edit Category</h2>
+
+<p>
+    @Html.ActionLink("Back to Categories", "Index", new { })
+</p>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+<table class="table">
+    <tr>
+        <td>Name</td>
+        <td>
+            @Html.HiddenFor(model => model.id)
+            @Html.TextBoxFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </td>
+    </tr>
+    <tr>
+        <td>ID</td>
+        <td>
+            @Html.DisplayFor(model => model.id)
+        </td>
+    </tr>
+</table>
+<input type="submit" value="Save" />
+}

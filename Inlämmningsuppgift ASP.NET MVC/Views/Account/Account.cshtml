@@ -1,0 +1,61 @@
+﻿@model Inlämmningsuppgift_ASP.NET_MVC.ViewModels.AccountViewViewModel
+@{
+    ViewBag.Title = "View Account";
+}
+
+<h2>Account Info</h2>
+
+<p>
+    @Html.ActionLink("Back to Accounts", "Admin", new { })
+</p>
+
+<table class="table">
+    <tr>
+        <td>Id</td>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <td>UserName</td>
+        <td>@Model.UserName</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <td>EmailConfirmed</td>
+        <td>@Model.EmailConfirmed</td>
+    </tr>
+    <tr>
+        <td>PasswordHash</td>
+        <td>@Model.PasswordHash</td>
+    </tr>
+    <tr>
+        <td>SecurityStamp</td>
+        <td>@Model.SecurityStamp</td>
+    </tr>
+    <tr>
+        <td>PhoneNumber</td>
+        <td>@Model.PhoneNumber</td>
+    </tr>
+    <tr>
+        <td>PhoneNumberConfirmed</td>
+        <td>@Model.PhoneNumberConfirmed</td>
+    </tr>
+    <tr>
+        <td>TwoFactorEnabled</td>
+        <td>@Model.TwoFactorEnabled</td>
+    </tr>
+    <tr>
+        <td>LockoutEndDateUtc</td>
+        <td>@Model.LockoutEndDateUtc</td>
+    </tr>
+    <tr>
+        <td>LockoutEnabled</td>
+        <td>@Model.LockoutEnabled</td>
+    </tr>
+    <tr>
+        <td>AccessFailedCount</td>
+        <td>@Model.AccessFailedCount</td>
+    </tr>
+</table>

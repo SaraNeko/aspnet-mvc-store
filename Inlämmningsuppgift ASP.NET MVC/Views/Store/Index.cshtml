@@ -1,0 +1,45 @@
+﻿@model Inlämmningsuppgift_ASP.NET_MVC.ViewModels.CategoryIndexViewModel
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>Categories</h2>
+
+<p>
+    @Html.ActionLink("Add New Category", "CreateCategory")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+			Name
+            @if (Model.CurrentSort != "NameAsc")
+            {
+                @Html.ActionLink("▼", "Index", new { sort = "NameAsc" }, new { title = "Sort by Name Ascending" })
+            }
+            @if (Model.CurrentSort != "NameDesc")
+            {
+                @Html.ActionLink("▲", "Index", new { sort = "NameDesc" }, new { title = "Sort by Name Descending" })
+            }
+        </th>
+        <th>Options</th>
+    </tr>
+    @foreach (var item in Model.Categories)
+    {
+        <tr>
+            <td>
+				<b>@Html.ActionLink(item.name, "Category", new { id = item.id })</b>			
+				<br>
+				@item.id
+			</td>
+            <td>
+				@if (User.IsInRole("Admin") || User.IsInRole("Product Manager"))
+				{
+					@Html.ActionLink("Edit", "EditCategory", new { id = item.id }) <text>|</text>
+				}
+                @Html.ActionLink("View", "Category", new { id = item.id })
+            </td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,101 @@
+﻿@model Inlämmningsuppgift_ASP.NET_MVC.ViewModels.AccountEditViewModel
+@{
+    ViewBag.Title = "Edit Account";
+}
+
+<h2>Edit Account</h2>
+
+<p>
+    @Html.ActionLink("Back to Accounts", "Admin", new { })
+</p>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+<table class="table">
+    <tr>
+        <td>ID</td>
+        <td>
+            @Html.DisplayFor(model => model.Id)
+        </td>
+    </tr>
+    <tr>
+        <td>UserName</td>
+        <td>
+            @Html.HiddenFor(model => model.Id)
+            @Html.TextBoxFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>
+            @Html.TextBoxFor(p => p.Email)
+            @Html.ValidationMessageFor(p => p.Email)
+        </td>
+    </tr>
+    <tr>
+        <td>EmailConfirmed</td>
+        <td>
+            @Html.TextBoxFor(p => p.EmailConfirmed)
+            @Html.ValidationMessageFor(p => p.EmailConfirmed)
+        </td>
+    </tr>
+    <tr>
+        <td>PasswordHash</td>
+        <td>
+            @Html.TextBoxFor(p => p.PasswordHash)
+            @Html.ValidationMessageFor(p => p.PasswordHash)
+        </td>
+    </tr>
+    <tr>
+        <td>SecurityStamp</td>
+        <td>
+            @Html.TextBoxFor(p => p.SecurityStamp)
+            @Html.ValidationMessageFor(p => p.SecurityStamp)
+        </td>
+    </tr>
+    <tr>
+        <td>PhoneNumber</td>
+        <td>
+            @Html.TextBoxFor(p => p.PhoneNumber)
+            @Html.ValidationMessageFor(p => p.PhoneNumber)
+        </td>
+    </tr>
+    <tr>
+        <td>PhoneNumberConfirmed</td>
+        <td>
+            @Html.TextBoxFor(p => p.PhoneNumberConfirmed)
+            @Html.ValidationMessageFor(p => p.PhoneNumberConfirmed)
+        </td>
+    </tr>
+    <tr>
+        <td>TwoFactorEnabled</td>
+        <td>
+            @Html.TextBoxFor(p => p.TwoFactorEnabled)
+            @Html.ValidationMessageFor(p => p.TwoFactorEnabled)
+        </td>
+    </tr>
+    <tr>
+        <td>LockoutEndDateUtc</td>
+        <td>
+            @Html.TextBoxFor(p => p.LockoutEndDateUtc)
+            @Html.ValidationMessageFor(p => p.LockoutEndDateUtc)
+        </td>
+    </tr>
+    <tr>
+        <td>LockoutEnabled</td>
+        <td>
+            @Html.TextBoxFor(p => p.LockoutEnabled)
+            @Html.ValidationMessageFor(p => p.LockoutEnabled)
+        </td>
+    </tr>
+    <tr>
+        <td>AccessFailedCount</td>
+        <td>
+            @Html.TextBoxFor(p => p.AccessFailedCount)
+            @Html.ValidationMessageFor(p => p.AccessFailedCount)
+        </td>
+    </tr>
+</table>
+<input type="submit" value="Save" />
+}
